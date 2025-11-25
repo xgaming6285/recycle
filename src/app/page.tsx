@@ -387,6 +387,70 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Transport and Logistics Section */}
+          <div className="mt-24 mb-16">
+            <h2 className="text-[#236b3e] text-3xl md:text-4xl font-bold text-center mb-4">
+              Транспорт и Логистика
+            </h2>
+            <p className="text-center text-gray-600 text-lg md:text-xl mb-12">
+              Надеждни логистични решения за извозване на материали
+            </p>
+
+            {/* Vehicles Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              {/* Bus */}
+              <div className="relative h-[250px] md:h-[300px] w-full group">
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-t-8 border-l-8 border-[#1E4D2B] hidden md:block lg:border-t-[12px] lg:border-l-[12px]"></div>
+                <Image
+                  src="/images/bus.png"
+                  alt="Transport Bus"
+                  fill
+                  className="object-contain relative z-10"
+                />
+              </div>
+              {/* Crane */}
+              <div className="relative h-[250px] md:h-[300px] w-full">
+                <Image
+                  src="/images/crane.png"
+                  alt="Truck with Crane"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              {/* Truck */}
+              <div className="relative h-[250px] md:h-[300px] w-full">
+                <div className="absolute -top-4 -right-4 w-24 h-24 border-t-8 border-r-8 border-[#b59161] hidden md:block lg:border-t-[12px] lg:border-r-[12px]"></div>
+                <Image
+                  src="/images/truck.png"
+                  alt="Truck with Container"
+                  fill
+                  className="object-contain relative z-10"
+                />
+              </div>
+            </div>
+
+            {/* Map and Info */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+              <div className="relative w-full md:w-[400px] h-[250px] md:h-[300px]">
+                <Image
+                  src="/images/map.png"
+                  alt="Service Map"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col gap-6 max-w-md">
+                <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
+                  Редовни графици за извозване.
+                  <br />
+                  Свържете се с нас за изготвяне на
+                  <br />
+                  индивидуален план.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
