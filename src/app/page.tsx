@@ -345,6 +345,48 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          {/* Plastic Section */}
+          <div className="mb-20 mt-16">
+            <h2 className="text-black text-4xl md:text-5xl font-bold text-center mb-4">
+              Пластмаса
+            </h2>
+            <p className="text-center text-lg md:text-xl text-gray-600 mb-10">
+              Изкупуваме найлон (LDPE) и твърда пластмаса (HDPE/PP).
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {/* Nylon Item */}
+              <div className="flex flex-col items-center">
+                <div className="relative w-full h-[250px] md:h-[300px] rounded-2xl overflow-hidden mb-4 shadow-sm">
+                  <Image
+                    src="/images/nylon.png"
+                    alt="Найлон (LDPE)"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-xl md:text-2xl font-medium text-gray-800">
+                  Найлон (LDPE)
+                </p>
+              </div>
+
+              {/* Hard Plastic Item */}
+              <div className="flex flex-col items-center">
+                <div className="relative w-full h-[250px] md:h-[300px] rounded-2xl overflow-hidden mb-4 shadow-sm">
+                  <Image
+                    src="/images/pipes.png"
+                    alt="Твърда пластмаса (HDPE/PP)"
+                    fill
+                    className="object-cover scale-x-110"
+                  />
+                </div>
+                <p className="text-xl md:text-2xl font-medium text-gray-800">
+                  Твърда пластмаса (HDPE/PP)
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
