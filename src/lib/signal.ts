@@ -409,9 +409,10 @@ export async function sendSignalImages(imageUrls: string[]) {
     try {
       await sendSignalImage(imageUrl, caption);
 
-      // Add a small delay between images to avoid rate limiting (1 second)
+      // Add delay between images to avoid rate limiting (3 seconds)
+      // CallMeBot has strict rate limits
       if (i < imageUrls.length - 1) {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 3000));
       }
     } catch (error) {
       console.error(`Failed to send image ${i + 1}:`, error);

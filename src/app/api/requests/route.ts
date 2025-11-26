@@ -51,7 +51,11 @@ export async function POST(request: NextRequest) {
       await sendSignalNotification(notificationMessage);
       
       // Then send the images if any are attached
+      // CallMeBot has rate limiting, so we need to wait before sending images
       if (imageList.length > 0) {
+        // Wait 3 seconds before sending images to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        
         const imageUrls = getImageUrls(baseUrl, newRequest._id.toString(), imageList.length);
         await sendSignalImages(imageUrls);
       }
