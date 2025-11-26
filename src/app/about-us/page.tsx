@@ -208,12 +208,12 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
             {/* Stat 1: Tons Recycled */}
             <div className="flex flex-col items-center text-center">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-start mb-4">
                 <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
                   15,000+
                 </span>
                 {/* Truck Icon */}
-                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                <div className="relative w-8 h-8 md:w-12 md:h-12 -mt-1 -ml-8">
                   <Image
                     src="/images/last_1.png"
                     alt="Recycling Truck"
@@ -231,12 +231,12 @@ export default function AboutUs() {
 
             {/* Stat 2: Corporate Clients */}
             <div className="flex flex-col items-center text-center">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-start mb-4">
                 <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
                   500+
                 </span>
                 {/* Handshake Icon */}
-                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                <div className="relative w-8 h-8 md:w-12 md:h-12 -mt-1 -ml-8">
                   <Image
                     src="/images/last_2.png"
                     alt="Corporate Clients"
@@ -254,12 +254,12 @@ export default function AboutUs() {
 
             {/* Stat 3: Trees Saved */}
             <div className="flex flex-col items-center text-center">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-start mb-4">
                 <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
                   255,000+
                 </span>
                 {/* Tree Icon */}
-                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                <div className="relative w-8 h-8 md:w-12 md:h-12 -mt-1 -ml-8">
                   <Image
                     src="/images/last_3.png"
                     alt="Trees Saved"
@@ -271,6 +271,72 @@ export default function AboutUs() {
               <p className="text-white/90 text-xl md:text-2xl font-medium">
                 Спасени дървета
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Licenses and Permits Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#236b3e] mb-6">
+            Лицензи и Разрешителни
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto mb-16">
+            Притежаваме разрешение за дейности с отпадъци <br />№ BG-12345/2023,
+            издадено от РИОСВ.
+          </p>
+
+          <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+            {/* ISO 9001 */}
+            <div className="relative w-48 h-48 md:w-56 md:h-56 transition-transform duration-300 hover:scale-105 cursor-pointer">
+              <Image
+                src="/images/iso9001_big.png"
+                alt="ISO 9001 Certified"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* RIOSV */}
+            <div className="relative w-64 h-48 md:w-72 md:h-56 group cursor-pointer flex flex-col items-center justify-center">
+              <div className="relative w-full h-full transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/riosv_big.png"
+                  alt="RIOSV License"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              {/* Download Button/Tooltip */}
+              <div className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white shadow-lg rounded-lg px-4 py-2 border border-gray-100 flex items-center gap-2 whitespace-nowrap z-10">
+                <span className="text-sm font-medium text-gray-700">
+                  Изтегли PDF лиценз
+                </span>
+                <svg
+                  className="w-4 h-4 text-[#236b3e]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* ISO 14001 */}
+            <div className="relative w-56 h-56 md:w-64 md:h-64 transition-transform duration-300 hover:scale-105 cursor-pointer">
+              <Image
+                src="/images/iso14001_big.png"
+                alt="ISO 14001 Certified"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
         </div>
