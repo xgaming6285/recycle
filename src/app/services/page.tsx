@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ServicesPage() {
   return (
@@ -133,6 +134,84 @@ export default function ServicesPage() {
                   Сигурно унищожаване на поверителни документи с гаранция за
                   конфиденциалност и протокол.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Section: Equipment / Press & Container */}
+        <div className="w-full py-20 px-4 md:px-8 lg:px-16 bg-white overflow-visible">
+          <div className="max-w-[1500px] mx-auto">
+            {/* Title */}
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1E4D2B] mb-24 leading-tight text-center">
+              Нуждаете се от преса или контейнер?
+            </h2>
+
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 lg:ml-24">
+              {/* Left Image */}
+              <div className="w-full lg:w-1/2 flex justify-center overflow-visible">
+                <Image
+                  src="/images/machinee.png"
+                  alt="Vertical Press"
+                  width={1400}
+                  height={1700}
+                  className="object-contain lg:-ml-40 mt-16"
+                />
+              </div>
+
+              {/* Right Content */}
+              <div className="w-full lg:w-1/2 flex flex-col text-left">
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    Вертикални преси
+                  </h3>
+                  <ul className="space-y-2">
+                    {[
+                      "Идеални за магазини и супермаркети.",
+                      "Спестяват място и намаляват обема на отпадъците.",
+                      "Лесни за управление и поддръжка.",
+                      "Различни размери според нуждите ви.",
+                    ].map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 text-gray-700 text-lg"
+                      >
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-800 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mb-10">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    Контейнери
+                  </h3>
+                  <ul className="space-y-2">
+                    {[
+                      "За строителни отпадъци или големи обеми пластмаса.",
+                      "Здрава конструкция и различни вместимости.",
+                      "Удобни за товарене и транспортиране.",
+                    ].map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 text-gray-700 text-lg"
+                      >
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-800 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <Link
+                    href="/#contacts"
+                    className="inline-block bg-[#F47C20] hover:bg-[#d66b1a] text-white font-bold text-lg py-3 px-8 rounded-lg transition-colors duration-300 shadow-md"
+                  >
+                    Заявете оборудване
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
