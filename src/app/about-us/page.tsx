@@ -188,6 +188,93 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+
+      {/* Statistics Section */}
+      <section className="relative min-h-screen w-full flex items-center justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/factory.png"
+            alt="Factory Background"
+            fill
+            className="object-cover"
+          />
+          {/* Dark green overlay */}
+          <div className="absolute inset-0 bg-[#1a3d2a]/70" />
+        </div>
+
+        {/* Statistics Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
+            {/* Stat 1: Tons Recycled */}
+            <div className="flex flex-col items-center text-center">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
+                  15,000+
+                </span>
+                {/* Truck Icon */}
+                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                  <Image
+                    src="/images/last_1.png"
+                    alt="Recycling Truck"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <p className="text-white/90 text-xl md:text-2xl font-medium">
+                Тонове рециклирани
+                <br />
+                годишно
+              </p>
+            </div>
+
+            {/* Stat 2: Corporate Clients */}
+            <div className="flex flex-col items-center text-center">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
+                  500+
+                </span>
+                {/* Handshake Icon */}
+                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                  <Image
+                    src="/images/last_2.png"
+                    alt="Corporate Clients"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <p className="text-white/90 text-xl md:text-2xl font-medium">
+                Доволни корпоративни
+                <br />
+                клиенти
+              </p>
+            </div>
+
+            {/* Stat 3: Trees Saved */}
+            <div className="flex flex-col items-center text-center">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
+                  255,000+
+                </span>
+                {/* Tree Icon */}
+                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                  <Image
+                    src="/images/last_3.png"
+                    alt="Trees Saved"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <p className="text-white/90 text-xl md:text-2xl font-medium">
+                Спасени дървета
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
