@@ -6,6 +6,15 @@ export default function ContactForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedMaterial, setSelectedMaterial] = useState("");
   const [selectedImages, setSelectedImages] = useState<{ file: File; preview: string }[]>([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    quantity: "",
+    location: "",
+    phone: "",
+  });
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const objectUrlsRef = useRef<string[]>([]);
 
@@ -18,6 +27,93 @@ export default function ContactForm() {
   const getMaterialLabel = (value: string) => {
     const material = materials.find((m) => m.value === value);
     return material ? material.label : "Вид материал";
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const convertToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      // Limit max file size to roughly 500KB to avoid payload issues
+      const MAX_WIDTH = 800;
+      const reader = new FileReader();
+      
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target?.result as string;
+        
+        img.onload = () => {
+          const elem = document.createElement('canvas');
+          const scaleFactor = MAX_WIDTH / img.width;
+          
+          if (scaleFactor < 1) {
+            elem.width = MAX_WIDTH;
+            elem.height = img.height * scaleFactor;
+          } else {
+            elem.width = img.width;
+            elem.height = img.height;
+          }
+
+          const ctx = elem.getContext('2d');
+          ctx?.drawImage(img, 0, 0, elem.width, elem.height);
+          
+          // Compress to JPEG with 0.7 quality
+          resolve(elem.toDataURL('image/jpeg', 0.7));
+        };
+        img.onerror = (error) => reject(error);
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ type: null, message: '' });
+    setIsSubmitting(true);
+
+    if (!selectedMaterial) {
+      setStatus({ type: 'error', message: 'Моля, изберете вид материал.' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Convert images to Base64
+      const base64Images = await Promise.all(
+        selectedImages.map((img) => convertToBase64(img.file))
+      );
+
+      const response = await fetch('/api/requests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          material: selectedMaterial,
+          images: base64Images,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Запитването е изпратено успешно!' });
+        // Reset form
+        setFormData({ name: "", quantity: "", location: "", phone: "" });
+        setSelectedMaterial("");
+        setSelectedImages([]);
+      } else {
+        setStatus({ type: 'error', message: data.error || 'Възникна грешка при изпращането.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Възникна грешка при свързване със сървъра.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,11 +158,15 @@ export default function ContactForm() {
   }, []);
 
   return (
-    <form className="space-y-4">
+    <form className="space-y-4" onSubmit={handleSubmit}>
       <input
         type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleInputChange}
         placeholder="Име/Фирма"
         className="w-full px-6 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#236B43] text-black placeholder-gray-700 placeholder:font-semibold"
+        required
       />
 
       <div className="flex flex-col sm:flex-row gap-4 relative z-20">
@@ -120,21 +220,33 @@ export default function ContactForm() {
 
         <input
           type="text"
+          name="quantity"
+          value={formData.quantity}
+          onChange={handleInputChange}
           placeholder="Приблизително количество (кг/тон)"
           className="w-full sm:w-[60%] px-6 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#236B43] text-black placeholder-gray-700 placeholder:font-semibold relative z-10"
+          required
         />
       </div>
 
       <input
         type="text"
+        name="location"
+        value={formData.location}
+        onChange={handleInputChange}
         placeholder="Населено място"
         className="w-full px-6 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#236B43] text-black placeholder-gray-700 placeholder:font-semibold"
+        required
       />
 
       <input
         type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleInputChange}
         placeholder="Телефон за връзка"
         className="w-full px-6 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#236B43] text-black placeholder-gray-700 placeholder:font-semibold"
+        required
       />
 
       <input
@@ -191,10 +303,17 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-[#34623b]! hover:bg-[#2a5030]! text-white font-bold py-3 px-4 rounded-full transition-colors"
+        disabled={isSubmitting}
+        className={`w-full bg-[#34623b]! hover:bg-[#2a5030]! text-white font-bold py-3 px-4 rounded-full transition-colors ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
       >
-        Изпрати запитване
+        {isSubmitting ? 'Изпращане...' : 'Изпрати запитване'}
       </button>
+
+      {status.message && (
+        <div className={`p-4 rounded-lg ${status.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+          {status.message}
+        </div>
+      )}
     </form>
   );
 }
