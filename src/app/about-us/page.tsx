@@ -104,6 +104,90 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+
+      {/* History Timeline Section */}
+      <section className="py-16 px-6 bg-white overflow-hidden mb-20">
+        <div className="max-w-4xl mx-auto relative">
+          {/* Vertical Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-[#236b3e] transform -translate-x-1/2"></div>
+
+          {/* Item 1: 2010 (Left) */}
+          <div className="relative flex items-center justify-center mb-24">
+            {/* Left Content */}
+            <div className="w-1/2 pr-4 md:pr-12 text-right flex items-center justify-end">
+              <span className="text-xl md:text-2xl text-gray-800 font-medium">
+                Основаване на
+                <br />
+                фирмата
+              </span>
+              <div className="h-[3px] w-8 md:w-12 bg-[#236b3e] ml-4"></div>
+            </div>
+            {/* Center Circle */}
+            <div className="absolute flex items-center justify-center w-20 h-20 bg-[#236b3e] rounded-full border-4 border-white z-10 shadow-sm">
+              <span className="text-white text-xl font-bold">2010</span>
+            </div>
+            {/* Right Content (Empty) */}
+            <div className="w-1/2 pl-4 md:pl-12"></div>
+          </div>
+
+          {/* Item 2: 2014 (Right) */}
+          <div className="relative flex items-center justify-center mb-24">
+            {/* Left Content (Empty) */}
+            <div className="w-1/2 pr-4 md:pr-12"></div>
+            {/* Center Circle */}
+            <div className="absolute flex items-center justify-center w-20 h-20 bg-[#236b3e] rounded-full border-4 border-white z-10 shadow-sm">
+              <span className="text-white text-xl font-bold">2014</span>
+            </div>
+            {/* Right Content */}
+            <div className="w-1/2 pl-4 md:pl-12 text-left flex items-center justify-start">
+              <div className="h-[3px] w-8 md:w-12 bg-[#236b3e] mr-4"></div>
+              <span className="text-xl md:text-2xl text-gray-800 font-medium">
+                Откриване на
+                <br />
+                собствена база
+              </span>
+            </div>
+          </div>
+
+          {/* Item 3: 2018 (Left) */}
+          <div className="relative flex items-center justify-center mb-24">
+            {/* Left Content */}
+            <div className="w-1/2 pr-4 md:pr-12 text-right flex items-center justify-end">
+              <span className="text-xl md:text-2xl text-gray-800 font-medium">
+                Лицензиране
+                <br />
+                от РИОСВ
+              </span>
+              <div className="h-[3px] w-8 md:w-12 bg-[#236b3e] ml-4"></div>
+            </div>
+            {/* Center Circle */}
+            <div className="absolute flex items-center justify-center w-20 h-20 bg-[#236b3e] rounded-full border-4 border-white z-10 shadow-sm">
+              <span className="text-white text-xl font-bold">2018</span>
+            </div>
+            {/* Right Content (Empty) */}
+            <div className="w-1/2 pl-4 md:pl-12"></div>
+          </div>
+
+          {/* Item 4: 2023 (Right) */}
+          <div className="relative flex items-center justify-center">
+            {/* Left Content (Empty) */}
+            <div className="w-1/2 pr-4 md:pr-12"></div>
+            {/* Center Circle */}
+            <div className="absolute flex items-center justify-center w-20 h-20 bg-[#236b3e] rounded-full border-4 border-white z-10 shadow-sm">
+              <span className="text-white text-xl font-bold">2023</span>
+            </div>
+            {/* Right Content */}
+            <div className="w-1/2 pl-4 md:pl-12 text-left flex items-center justify-start">
+              <div className="h-[3px] w-8 md:w-12 bg-[#236b3e] mr-4"></div>
+              <span className="text-xl md:text-2xl text-gray-800 font-medium">
+                Инвестиция в
+                <br />
+                модерен автопарк
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
