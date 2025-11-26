@@ -29,10 +29,14 @@ export async function POST(request: NextRequest) {
     // Send Signal Notification
     const notificationMessage = `🚀 Ново Запитване!\n\n👤 Име: ${name}\n📦 Материал: ${material}\n⚖️ Количество: ${quantity}\n📍 Локация: ${location}\n📞 Телефон: ${phone}`;
     
-    // Don't await this so the user response isn't delayed
-    sendSignalNotification(notificationMessage).catch(err => 
-      console.error('Background notification error:', err)
-    );
+    // Must await on Vercel - serverless functions terminate immediately after response
+    // If we don't await, the notification fetch gets killed before completion
+    try {
+      await sendSignalNotification(notificationMessage);
+    } catch (err) {
+      console.error('Signal notification error:', err);
+      // Don't fail the request if notification fails
+    }
 
     return NextResponse.json({ success: true, data: newRequest }, { status: 201 });
   } catch (error: any) {
