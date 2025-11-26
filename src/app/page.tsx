@@ -104,16 +104,16 @@ export default function Home() {
 
       {/* How We Work Section */}
       <section className="bg-[#FAFAFA] py-10 px-0 overflow-hidden">
-        <div className="max-w-full ml-0 pl-4">
+        <div className="w-full">
           {/* Section Title */}
           <h2 className="text-[#236b3e] text-4xl sm:text-5xl md:text-6xl font-bold text-center mt-6 -mb-12">
             Как работим?
           </h2>
 
           {/* Steps Container */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-4 md:gap-0 lg:gap-0 md:-ml-20 lg:-ml-32">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-4 md:gap-0 lg:gap-0 md:-ml-10 lg:-ml-16">
             {/* Step 1 - Transport */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[180px] lg:-mr-[220px]">
+            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[100px] lg:-mr-[140px]">
               <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
                 <Image
                   src="/images/emojie_11.png"
@@ -131,7 +131,7 @@ export default function Home() {
             </div>
 
             {/* Step 2 - Weighing */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[180px] lg:-mr-[220px]">
+            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[100px] lg:-mr-[140px]">
               <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
                 <Image
                   src="/images/emojie_22.png"
@@ -149,7 +149,7 @@ export default function Home() {
             </div>
 
             {/* Step 3 - Payment */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[180px] lg:-mr-[220px]">
+            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[100px] lg:-mr-[140px]">
               <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
                 <Image
                   src="/images/emojie_33.png"
