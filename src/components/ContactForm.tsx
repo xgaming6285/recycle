@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function ContactForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedMaterial, setSelectedMaterial] = useState("");
+  const [selectedImages, setSelectedImages] = useState<{ file: File; preview: string }[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const objectUrlsRef = useRef<string[]>([]);
 
   const materials = [
     { value: "cardboard", label: "Картон" },
@@ -16,6 +19,47 @@ export default function ContactForm() {
     const material = materials.find((m) => m.value === value);
     return material ? material.label : "Вид материал";
   };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files).map((file) => {
+        const preview = URL.createObjectURL(file);
+        objectUrlsRef.current.push(preview);
+        return { file, preview };
+      });
+      setSelectedImages((prev) => [...prev, ...newFiles]);
+    }
+    // Reset input value to allow selecting the same file again if needed
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setSelectedImages((prev) => {
+      const newImages = [...prev];
+      const imageToRemove = newImages[index];
+      
+      // Clean up the specific URL being removed
+      URL.revokeObjectURL(imageToRemove.preview);
+      objectUrlsRef.current = objectUrlsRef.current.filter(url => url !== imageToRemove.preview);
+      
+      newImages.splice(index, 1);
+      return newImages;
+    });
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
+  useEffect(() => {
+    // Cleanup only on unmount
+    return () => {
+      objectUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
+      objectUrlsRef.current = [];
+    };
+  }, []);
 
   return (
     <form className="space-y-4">
@@ -93,9 +137,40 @@ export default function ContactForm() {
         className="w-full px-6 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#236B43] text-black placeholder-gray-700 placeholder:font-semibold"
       />
 
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        className="hidden"
+        multiple
+        accept="image/*"
+      />
+
+      {selectedImages.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {selectedImages.map((image, index) => (
+            <div key={index} className="relative w-20 h-20">
+              <img
+                src={image.preview}
+                alt="Preview"
+                className="w-full h-full object-cover rounded-lg"
+              />
+              <button
+                type="button"
+                onClick={() => removeImage(index)}
+                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 w-5 h-5 flex items-center justify-center text-xs shadow-md hover:bg-red-600 transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
       <button
         type="button"
-        className="w-full px-6 py-3 border-2 border-black rounded-full flex items-center justify-center gap-2 text-black font-bold hover:bg-gray-50 transition-colors"
+        onClick={triggerFileInput}
+        className="w-full px-6 py-3 border-2 border-black rounded-full flex items-center justify-center gap-2 text-black font-bold hover:bg-gray-50 transition-colors cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

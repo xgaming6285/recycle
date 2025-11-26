@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
@@ -20,58 +21,7 @@ export default function Home() {
         </div>
 
         {/* Header Navigation */}
-        <header className="relative z-10 flex items-center justify-between px-8 py-6 lg:px-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Image
-              src="/images/logo-Photoroom.png"
-              alt="Recycle Logo"
-              width={50}
-              height={50}
-              className="h-auto w-30 lg:w-30"
-            />
-          </div>
-
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-12">
-            <a
-              href="#about"
-              className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
-            >
-              За Нас
-            </a>
-            <a
-              href="#services"
-              className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
-            >
-              Услуги
-            </a>
-            <a
-              href="#contacts"
-              className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
-            >
-              Контакти
-            </a>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-white p-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
-        </header>
+        <Header />
 
         {/* Hero Content */}
         <main className="absolute inset-0 z-10 flex items-center justify-center">
@@ -104,7 +54,7 @@ export default function Home() {
       </div>
 
       {/* How We Work Section */}
-      <section className="bg-[#FAFAFA] py-10 px-0 overflow-hidden">
+      <section className="bg-[#FAFAFA] py-10 px-0 overflow-hidden" id="about">
         <div className="w-full">
           {/* Section Title */}
           <h2 className="text-[#236b3e] text-4xl sm:text-5xl md:text-6xl font-bold text-center mt-6 -mb-12">
