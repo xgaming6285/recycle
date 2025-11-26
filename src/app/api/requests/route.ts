@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import RequestModel from '@/models/Request';
-import { sendSignalNotification } from '@/lib/signal';
+import { sendSignalNotification, formatSignalMessage, sendSignalImages, getImageUrls } from '@/lib/signal';
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,13 +26,35 @@ export async function POST(request: NextRequest) {
       images: images || [],
     });
 
-    // Send Signal Notification
-    const notificationMessage = `🚀 Ново Запитване!\n\n👤 Име: ${name}\n📦 Материал: ${material}\n⚖️ Количество: ${quantity}\n📍 Локация: ${location}\n📞 Телефон: ${phone}`;
+    // Get the base URL from the request or environment
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
+                    request.headers.get('origin') || 
+                    'http://localhost:3000';
+
+    const imageList = images || [];
+    
+    // Send beautifully formatted Signal Notification (including image count)
+    const notificationMessage = formatSignalMessage({
+      name,
+      material,
+      quantity,
+      location,
+      phone,
+      imageCount: imageList.length,
+    });
     
     // Must await on Vercel - serverless functions terminate immediately after response
     // If we don't await, the notification fetch gets killed before completion
     try {
+      // First send the main notification text
       await sendSignalNotification(notificationMessage);
+      
+      // Then send the images if any are attached
+      if (imageList.length > 0) {
+        const imageUrls = getImageUrls(baseUrl, newRequest._id.toString(), imageList.length);
+        await sendSignalImages(imageUrls);
+      }
     } catch (err) {
       console.error('Signal notification error:', err);
       // Don't fail the request if notification fails
