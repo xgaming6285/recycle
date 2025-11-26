@@ -344,83 +344,45 @@ export async function sendSignalNotification(message: string) {
   }
 }
 
-// Send an image via Signal using CallMeBot API
+// Send image links via Signal (CallMeBot's image= parameter doesn't display properly)
+// Instead, we send clickable links that open in browser
 export async function sendSignalImage(imageUrl: string, caption?: string) {
-  const apiKey = process.env.SIGNAL_API_KEY?.trim();
-  const phoneNumber = process.env.SIGNAL_PHONE_NUMBER?.trim();
+  // Send a message with the image URL as a clickable link
+  const message = caption ? `${caption}\n🔗 ${imageUrl}` : `📷 ${imageUrl}`;
 
-  if (!apiKey || !phoneNumber) {
-    console.warn("Signal credentials not found. Skipping image notification.");
-    return;
-  }
+  console.log(`Sending Signal image link...`);
+  console.log(`Image URL: ${imageUrl}`);
 
-  // CallMeBot API format: https://signal.callmebot.com/signal/send.php?phone=X&apikey=Y&image=URL
-  // Note: Image URL should be publicly accessible
-  const url = `https://signal.callmebot.com/signal/send.php?phone=${phoneNumber}&apikey=${apiKey}&image=${encodeURIComponent(
-    imageUrl
-  )}`;
-
-  console.log(`Sending Signal image to ${phoneNumber}...`);
-  console.log(`Image URL being sent: ${imageUrl}`);
-
-  try {
-    const response = await fetch(url);
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      throw new Error(
-        `Signal Image API responded with status: ${response.status} - ${responseText}`
-      );
-    }
-
-    console.log("Signal Image API Response:", responseText);
-
-    // Send caption as a separate message if provided
-    if (caption) {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      await sendSignalNotification(caption);
-    }
-  } catch (error) {
-    console.error("Failed to send Signal image:", error);
-  }
+  await sendSignalNotification(message);
 }
 
-// Send multiple images with a small delay between each to avoid rate limiting
+// Send all image links in a single message to avoid rate limiting
 export async function sendSignalImages(imageUrls: string[]) {
-  const apiKey = process.env.SIGNAL_API_KEY?.trim();
-  const phoneNumber = process.env.SIGNAL_PHONE_NUMBER?.trim();
-
-  if (!apiKey || !phoneNumber) {
-    console.warn("Signal credentials not found. Skipping image notifications.");
-    return;
-  }
-
   if (imageUrls.length === 0) {
     return;
   }
 
-  console.log(`Sending ${imageUrls.length} images to Signal...`);
+  console.log(`Sending ${imageUrls.length} image links to Signal...`);
 
-  for (let i = 0; i < imageUrls.length; i++) {
-    const imageUrl = imageUrls[i];
-    const caption = `📷 ${toItalic("Снимка")} ${toBold(
-      (i + 1).toString()
-    )}/${toBold(imageUrls.length.toString())}`;
+  // Build a single message with all image links
+  const header = `📸 ${toBold("ПРИКАЧЕНИ СНИМКИ")} (${imageUrls.length})`;
+  const divider = "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈";
 
-    try {
-      await sendSignalImage(imageUrl, caption);
+  const links = imageUrls
+    .map(
+      (url, i) =>
+        `📷 ${toItalic("Снимка")} ${toBold((i + 1).toString())}:\n🔗 ${url}`
+    )
+    .join("\n\n");
 
-      // Add delay between images to avoid rate limiting (3 seconds)
-      // CallMeBot has strict rate limits
-      if (i < imageUrls.length - 1) {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-      }
-    } catch (error) {
-      console.error(`Failed to send image ${i + 1}:`, error);
-    }
+  const message = `${header}\n${divider}\n\n${links}`;
+
+  try {
+    await sendSignalNotification(message);
+    console.log("All image links sent to Signal.");
+  } catch (error) {
+    console.error("Failed to send image links:", error);
   }
-
-  console.log("All images sent to Signal.");
 }
 
 // Helper to generate image URLs for a request
