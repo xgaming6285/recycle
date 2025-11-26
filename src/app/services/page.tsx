@@ -13,11 +13,7 @@ export default function ServicesPage() {
       {/* Main Content */}
       <main className="grow">
         {/* Top Green Bar Title - Aligned with Header */}
-        <div className="bg-[#1E4D2B] w-full h-[100px] flex items-center justify-center">
-          <h1 className="text-white text-3xl md:text-4xl font-bold tracking-wider pt-2">
-            Услуги
-          </h1>
-        </div>
+        <div className="bg-[#1E4D2B] w-full h-[100px] flex items-center justify-center"></div>
 
         {/* Hero / Split Image Section */}
         <div className="relative w-full grow flex flex-col min-h-[calc(100vh-100px)]">
@@ -155,7 +151,7 @@ export default function ServicesPage() {
                   alt="Vertical Press"
                   width={1400}
                   height={1700}
-                  className="object-contain lg:-ml-40 mt-16"
+                  className="object-contain lg:-ml-40 mt-16 hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
@@ -211,6 +207,202 @@ export default function ServicesPage() {
                   >
                     Заявете оборудване
                   </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Law and Ecology Section */}
+        <div className="w-full py-16 px-4 md:px-8 lg:px-16 bg-gray-50 border-t border-gray-200">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
+            {/* Left Icon: Document */}
+            <div className="shrink-0">
+              <Image
+                src="/images/document.png"
+                alt="Лиценз и Документи"
+                width={200}
+                height={200}
+                className="object-contain drop-shadow-xl hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            {/* Center Text */}
+            <div className="flex flex-col items-center text-center max-w-2xl">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-black mb-6 tracking-tight">
+                Законност и Екология
+              </h2>
+              <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium">
+                Издаваме всички необходими документи за отчетност пред РИОСВ.
+                Работим с лиценз за дейности с отпадъци.
+              </p>
+            </div>
+
+            {/* Right Icon: Green Cycle */}
+            <div className="shrink-0">
+              <Image
+                src="/images/green.png"
+                alt="Екология"
+                width={180}
+                height={180}
+                className="object-contain drop-shadow-xl hover:rotate-12 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Process Steps Section */}
+        <div className="w-full py-20 px-4 md:px-8 lg:px-16 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative">
+              {/* Connector Line (Desktop) */}
+              <div className="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-[#589d40]/40 z-0 transform -translate-y-1/2" />
+
+              {/* Step 1 */}
+              <div className="flex flex-col items-center text-center w-full md:w-1/4 group z-10">
+                <div className="w-28 h-28 rounded-full bg-[#589d40] border-[6px] border-[#a1c293] ring-4 ring-[#a1c293] flex items-center justify-center text-white text-4xl font-bold shadow-lg mb-6 transition-transform duration-300 group-hover:scale-110">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 h-14 flex items-center justify-center leading-tight">
+                  Обаждане /<br />
+                  Заявка
+                </h3>
+                <div className="text-gray-600">
+                  {/* Phone Icon */}
+                  <svg
+                    className="w-10 h-10 mx-auto"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex flex-col items-center text-center w-full md:w-1/4 group z-10">
+                <div className="w-28 h-28 rounded-full bg-[#589d40] border-[6px] border-[#a1c293] ring-4 ring-[#a1c293] flex items-center justify-center text-white text-4xl font-bold shadow-lg mb-6 transition-transform duration-300 group-hover:scale-110">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 h-14 flex items-center justify-center leading-tight">
+                  Посещение и<br />
+                  Оценка
+                </h3>
+                <div className="text-gray-600">
+                  {/* Clipboard/Check Icon */}
+                  <svg
+                    className="w-10 h-10 mx-auto"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex flex-col items-center text-center w-full md:w-1/4 group z-10">
+                <div className="w-28 h-28 rounded-full bg-[#589d40] border-[6px] border-[#a1c293] ring-4 ring-[#a1c293] flex items-center justify-center text-white text-4xl font-bold shadow-lg mb-6 transition-transform duration-300 group-hover:scale-110">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 h-14 flex items-center justify-center leading-tight">
+                  Извозване и<br />
+                  Теглене
+                </h3>
+                <div className="flex gap-2 text-gray-600 items-center justify-center">
+                  {/* Truck Icon */}
+                  <svg
+                    className="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"
+                    />
+                  </svg>
+                  {/* Weight Icon */}
+                  <svg
+                    className="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="flex flex-col items-center text-center w-full md:w-1/4 group z-10">
+                <div className="w-28 h-28 rounded-full bg-[#589d40] border-[6px] border-[#a1c293] ring-4 ring-[#a1c293] flex items-center justify-center text-white text-4xl font-bold shadow-lg mb-6 transition-transform duration-300 group-hover:scale-110">
+                  4
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 h-14 flex items-center justify-center leading-tight">
+                  Плащане и<br />
+                  Документи
+                </h3>
+                <div className="flex gap-2 text-gray-600 items-center justify-center">
+                  {/* Payment/Money Icon */}
+                  <svg
+                    className="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  {/* Document Icon */}
+                  <svg
+                    className="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
