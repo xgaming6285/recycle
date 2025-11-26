@@ -62,9 +62,9 @@ export default function Home() {
           </h2>
 
           {/* Steps Container */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-4 md:gap-0 lg:gap-0 md:-ml-10 lg:-ml-16">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-1 md:gap-0 lg:gap-0 md:-ml-28 lg:-ml-40">
             {/* Step 1 - Transport */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[100px] lg:-mr-[140px]">
+            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[160px] lg:-mr-[200px]">
               <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
                 <Image
                   src="/images/emojie_11.png"
@@ -82,7 +82,7 @@ export default function Home() {
             </div>
 
             {/* Step 2 - Weighing */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[100px] lg:-mr-[140px]">
+            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[160px] lg:-mr-[200px]">
               <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
                 <Image
                   src="/images/emojie_22.png"
@@ -100,7 +100,7 @@ export default function Home() {
             </div>
 
             {/* Step 3 - Payment */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[100px] lg:-mr-[140px]">
+            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[160px] lg:-mr-[200px]">
               <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
                 <Image
                   src="/images/emojie_33.png"
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
 
             {/* Price Box */}
-            <div className="flex flex-col bg-[#236B43] rounded-xl overflow-hidden shadow-lg w-full md:w-auto min-w-[380px] max-w-[450px] self-center md:self-center md:ml-24 lg:ml-40 md:mt-48">
+            <div className="flex flex-col bg-[#236B43] rounded-xl overflow-hidden shadow-lg w-full md:w-auto min-w-[380px] max-w-[450px] self-center md:self-center md:ml-[144px] lg:ml-[140px] md:mt-48">
               <div className="bg-[#b59161] px-10 py-6">
                 <h4 className="text-white text-2xl font-bold text-center">
                   Актуални изкупни цени
