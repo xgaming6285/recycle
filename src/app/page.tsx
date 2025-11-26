@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -92,7 +93,7 @@ export default function Home() {
 
             {/* CTA Button */}
             <a
-              href="#contact"
+              href="#contacts"
               className="inline-block bg-[#05A44A] hover:bg-[#236B43] text-white text-lg font-bold px-[40px] py-[14px] rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
               style={{ marginTop: "1px" }}
             >
@@ -338,7 +339,7 @@ export default function Home() {
                 Свържете се с нас за оферта.
               </p>
               <a
-                href="#contact"
+                href="#contacts"
                 className="inline-block w-fit border-2 border-gray-400 text-[#236b43] hover:border-[#236B43] hover:text-[#236B43] text-lg font-medium px-8 py-3 rounded-lg transition-colors"
               >
                 Поискай Оферта
@@ -401,7 +402,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
               {/* Bus */}
               <div className="relative h-[250px] md:h-[300px] w-full group">
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-t-8 border-l-8 border-[#1E4D2B] hidden md:block lg:border-t-[12px] lg:border-l-[12px]"></div>
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-t-8 border-l-8 border-[#1E4D2B] hidden md:block lg:border-t-12 lg:border-l-12"></div>
                 <Image
                   src="/images/bus.png"
                   alt="Transport Bus"
@@ -420,7 +421,7 @@ export default function Home() {
               </div>
               {/* Truck */}
               <div className="relative h-[250px] md:h-[300px] w-full">
-                <div className="absolute -top-4 -right-4 w-24 h-24 border-t-8 border-r-8 border-[#b59161] hidden md:block lg:border-t-[12px] lg:border-r-[12px]"></div>
+                <div className="absolute -top-4 -right-4 w-24 h-24 border-t-8 border-r-8 border-[#b59161] hidden md:block lg:border-t-12 lg:border-r-12"></div>
                 <Image
                   src="/images/truck.png"
                   alt="Truck with Container"
@@ -448,6 +449,118 @@ export default function Home() {
                   <br />
                   индивидуален план.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contacts Section */}
+      <section className="py-16 px-6 md:px-16 lg:px-24 bg-white" id="contacts">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-black text-3xl md:text-4xl font-bold mb-16">
+            Контакти
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 mb-16">
+            {/* Contact Form */}
+            <div>
+              <h3 className="text-[#236b3e] text-xl md:text-2xl font-bold mb-6">
+                Поискай индивидуална оферта
+              </h3>
+
+              <ContactForm />
+            </div>
+
+            {/* Map */}
+            <div className="h-full min-h-[400px] w-full bg-gray-100 rounded-lg overflow-hidden relative shadow-md">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186126.44345323135!2d23.203811332647668!3d42.69535828706274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8682cb317bf5%3A0x400a01269bf5e60!2sSofia%2C%20Bulgaria!5e0!3m2!1sen!2sus!4v1652887444862!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* Footer / Partners */}
+          <div className="mt-32">
+            <div className="w-full h-2 bg-[#b59161] rounded-full mb-2"></div>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex flex-col md:flex-row items-center gap-4">
+                <p className="text-gray-600 text-sm font-medium whitespace-nowrap">
+                  Лиценз РИОСВ № 123456789 | Доверени партньори:
+                </p>
+
+                <div className="flex flex-wrap justify-center items-center gap-4">
+                  <div className="relative w-24 h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                    <Image
+                      src="/images/supermarket_logo.png"
+                      alt="Supermarket Chain"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="relative w-24 h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                    <Image
+                      src="/images/manufacturing_logo.png"
+                      alt="Manufacturing Company"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="relative w-24 h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                    <Image
+                      src="/images/natural_products_logo.png"
+                      alt="Natural Products"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex items-center gap-4">
+                <a href="#" className="hover:scale-110 transition-transform">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="#236B43"
+                    className="cursor-pointer hover:opacity-80"
+                  >
+                    <path d="M12 2.04c-5.5 0-10 4.49-10 10.02c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z" />
+                  </svg>
+                </a>
+                <a href="#" className="hover:scale-110 transition-transform">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="#236B43"
+                    className="cursor-pointer hover:opacity-80"
+                  >
+                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 3.8 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.8-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z" />
+                  </svg>
+                </a>
+                <a href="#" className="hover:scale-110 transition-transform">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="#236B43"
+                    className="cursor-pointer hover:opacity-80"
+                  >
+                    <path d="M21.58 16.34c-1.23-.18-2.5-.37-3.55-.56a1.8 1.8 0 0 0-1.65.42l-1.53 1.53c-2.56-1.42-5.2-4.06-6.62-6.62l1.53-1.53c.44-.44.65-1.07.55-1.68c-.28-1.56-.56-3.32-1-4.58c-.31-1-1.24-1.69-2.29-1.69h-3.4A2.45 2.45 0 0 0 1.2 4.09C1.62 14.1 9.9 22.38 19.91 22.8c1.36 0 2.47-1.09 2.49-2.45v-2.34c0-1.04-.69-1.96-1.69-2.27Z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

@@ -44,9 +44,4 @@ button {
   transition: all 0.3s ease;
 }
 
-/* Remove default button styles */
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+/* Remove default button styles - handled by Tailwind Preflight */
