@@ -4,13 +4,17 @@ import RequestModel from '@/models/Request';
 
 // This endpoint serves images stored as Base64 in MongoDB
 // Used by CallMeBot to fetch images for Signal notifications
+// URL format: /api/images/{requestId}/{imageIndex}.jpg
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ requestId: string; imageIndex: string }> }
 ) {
   try {
     const { requestId, imageIndex } = await params;
-    const index = parseInt(imageIndex, 10);
+    
+    // Strip file extension if present (e.g., "0.jpg" -> "0")
+    const cleanIndex = imageIndex.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
+    const index = parseInt(cleanIndex, 10);
 
     if (isNaN(index) || index < 0) {
       return NextResponse.json(

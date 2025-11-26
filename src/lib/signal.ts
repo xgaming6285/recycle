@@ -354,19 +354,14 @@ export async function sendSignalImage(imageUrl: string, caption?: string) {
     return;
   }
 
-  // Encode the image URL
-  const encodedImageUrl = encodeURIComponent(imageUrl);
-
-  // Build the URL with image parameter
-  // CallMeBot supports: image=[url_image]
-  let url = `https://signal.callmebot.com/signal/send.php?phone=${phoneNumber}&apikey=${apiKey}&image=${encodedImageUrl}`;
-
-  // Add caption if provided
-  if (caption) {
-    url += `&text=${encodeURIComponent(caption)}`;
-  }
+  // CallMeBot API format: https://signal.callmebot.com/signal/send.php?phone=X&apikey=Y&image=URL
+  // Note: Image URL should be publicly accessible
+  const url = `https://signal.callmebot.com/signal/send.php?phone=${phoneNumber}&apikey=${apiKey}&image=${encodeURIComponent(
+    imageUrl
+  )}`;
 
   console.log(`Sending Signal image to ${phoneNumber}...`);
+  console.log(`Image URL being sent: ${imageUrl}`);
 
   try {
     const response = await fetch(url);
@@ -379,6 +374,12 @@ export async function sendSignalImage(imageUrl: string, caption?: string) {
     }
 
     console.log("Signal Image API Response:", responseText);
+
+    // Send caption as a separate message if provided
+    if (caption) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await sendSignalNotification(caption);
+    }
   } catch (error) {
     console.error("Failed to send Signal image:", error);
   }
@@ -423,6 +424,7 @@ export async function sendSignalImages(imageUrls: string[]) {
 }
 
 // Helper to generate image URLs for a request
+// Adding .jpg extension helps some services recognize it as an image
 export function getImageUrls(
   baseUrl: string,
   requestId: string,
@@ -430,7 +432,7 @@ export function getImageUrls(
 ): string[] {
   const urls: string[] = [];
   for (let i = 0; i < imageCount; i++) {
-    urls.push(`${baseUrl}/api/images/${requestId}/${i}`);
+    urls.push(`${baseUrl}/api/images/${requestId}/${i}.jpg`);
   }
   return urls;
 }
