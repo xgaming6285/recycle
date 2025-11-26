@@ -436,84 +436,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Footer / Partners */}
-          <div className="mt-32">
-            <div className="w-full h-2 bg-[#b59161] rounded-full mb-2"></div>
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="flex flex-col md:flex-row items-center gap-4">
-                <p className="text-gray-600 text-sm font-medium whitespace-nowrap">
-                  Лиценз РИОСВ № 123456789 | Доверени партньори:
-                </p>
-
-                <div className="flex flex-wrap justify-center items-center gap-4">
-                  <div className="relative w-24 h-12 grayscale hover:grayscale-0 transition-all duration-300">
-                    <Image
-                      src="/images/supermarket_logo.png"
-                      alt="Supermarket Chain"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="relative w-24 h-12 grayscale hover:grayscale-0 transition-all duration-300">
-                    <Image
-                      src="/images/manufacturing_logo.png"
-                      alt="Manufacturing Company"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="relative w-24 h-12 grayscale hover:grayscale-0 transition-all duration-300">
-                    <Image
-                      src="/images/natural_products_logo.png"
-                      alt="Natural Products"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Icons */}
-              <div className="flex items-center gap-4">
-                <a href="#" className="hover:scale-110 transition-transform">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="#236B43"
-                    className="cursor-pointer hover:opacity-80"
-                  >
-                    <path d="M12 2.04c-5.5 0-10 4.49-10 10.02c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z" />
-                  </svg>
-                </a>
-                <a href="#" className="hover:scale-110 transition-transform">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="#236B43"
-                    className="cursor-pointer hover:opacity-80"
-                  >
-                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 3.8 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.8-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z" />
-                  </svg>
-                </a>
-                <a href="#" className="hover:scale-110 transition-transform">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="#236B43"
-                    className="cursor-pointer hover:opacity-80"
-                  >
-                    <path d="M21.58 16.34c-1.23-.18-2.5-.37-3.55-.56a1.8 1.8 0 0 0-1.65.42l-1.53 1.53c-2.56-1.42-5.2-4.06-6.62-6.62l1.53-1.53c.44-.44.65-1.07.55-1.68c-.28-1.56-.56-3.32-1-4.58c-.31-1-1.24-1.69-2.29-1.69h-3.4A2.45 2.45 0 0 0 1.2 4.09C1.62 14.1 9.9 22.38 19.91 22.8c1.36 0 2.47-1.09 2.49-2.45v-2.34c0-1.04-.69-1.96-1.69-2.27Z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
+          {/* Footer / Partners - Removed as it is replaced by global Footer */}
+          {/* <div className="mt-32"> ... </div> */}
         </div>
       </section>
     </div>

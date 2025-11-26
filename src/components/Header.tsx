@@ -29,7 +29,7 @@ export default function Header() {
       {/* Navigation (Desktop) */}
       <nav className="hidden md:flex items-center gap-8 lg:gap-12">
         <Link
-          href="/#about"
+          href="/about-us"
           className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
         >
           За Нас
@@ -92,7 +92,7 @@ export default function Header() {
         <div className="fixed inset-0 z-20 bg-black/95 md:hidden flex flex-col items-center justify-center">
           <nav className="flex flex-col items-center gap-8">
             <Link
-              href="/#about"
+              href="/about-us"
               className="text-white text-2xl font-medium hover:text-green-400 transition-colors"
               onClick={toggleMenu}
             >
