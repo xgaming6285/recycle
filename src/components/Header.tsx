@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,35 +15,37 @@ export default function Header() {
     <header className="relative z-20 flex items-center justify-between px-8 py-6 lg:px-16">
       {/* Logo */}
       <div className="flex items-center">
-        <Image
-          src="/images/logo-Photoroom.png"
-          alt="Recycle Logo"
-          width={50}
-          height={50}
-          className="h-auto w-30 lg:w-30"
-        />
+        <Link href="/">
+          <Image
+            src="/images/logo-Photoroom.png"
+            alt="Recycle Logo"
+            width={50}
+            height={50}
+            className="h-auto w-30 lg:w-30 cursor-pointer"
+          />
+        </Link>
       </div>
 
       {/* Navigation (Desktop) */}
       <nav className="hidden md:flex items-center gap-8 lg:gap-12">
-        <a
-          href="#about"
+        <Link
+          href="/#about"
           className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
         >
           За Нас
-        </a>
-        <a
-          href="#services"
+        </Link>
+        <Link
+          href="/services"
           className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
         >
           Услуги
-        </a>
-        <a
-          href="#contacts"
+        </Link>
+        <Link
+          href="/#contacts"
           className="text-white text-base lg:text-lg font-medium hover:text-green-400 transition-colors"
         >
           Контакти
-        </a>
+        </Link>
       </nav>
 
       {/* Mobile Menu Button */}
@@ -88,31 +91,30 @@ export default function Header() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-20 bg-black/95 md:hidden flex flex-col items-center justify-center">
           <nav className="flex flex-col items-center gap-8">
-            <a
-              href="#about"
+            <Link
+              href="/#about"
               className="text-white text-2xl font-medium hover:text-green-400 transition-colors"
               onClick={toggleMenu}
             >
               За Нас
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/services"
               className="text-white text-2xl font-medium hover:text-green-400 transition-colors"
               onClick={toggleMenu}
             >
               Услуги
-            </a>
-            <a
-              href="#contacts"
+            </Link>
+            <Link
+              href="/#contacts"
               className="text-white text-2xl font-medium hover:text-green-400 transition-colors"
               onClick={toggleMenu}
             >
               Контакти
-            </a>
+            </Link>
           </nav>
         </div>
       )}
     </header>
   );
 }
-
