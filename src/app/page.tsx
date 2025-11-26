@@ -62,10 +62,10 @@ export default function Home() {
           </h2>
 
           {/* Steps Container */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-1 md:gap-0 lg:gap-0 md:-ml-28 lg:-ml-40">
+          <div className="flex flex-col 2xl:flex-row items-center 2xl:items-start justify-center gap-1 2xl:gap-0 2xl:-ml-10 min-[2000px]:-ml-40">
             {/* Step 1 - Transport */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[160px] lg:-mr-[200px]">
-              <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
+            <div className="flex flex-col items-center text-center w-full 2xl:w-auto 2xl:-mr-[130px] min-[2000px]:-mr-[200px]">
+              <div className="w-[480px] h-[480px] 2xl:w-[450px] 2xl:h-[450px] min-[2000px]:w-[560px] min-[2000px]:h-[560px] relative">
                 <Image
                   src="/images/emojie_11.png"
                   alt="Transport truck"
@@ -82,8 +82,8 @@ export default function Home() {
             </div>
 
             {/* Step 2 - Weighing */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[160px] lg:-mr-[200px]">
-              <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
+            <div className="flex flex-col items-center text-center w-full 2xl:w-auto 2xl:-mr-[130px] min-[2000px]:-mr-[200px]">
+              <div className="w-[480px] h-[480px] 2xl:w-[450px] 2xl:h-[450px] min-[2000px]:w-[560px] min-[2000px]:h-[560px] relative">
                 <Image
                   src="/images/emojie_22.png"
                   alt="Digital scale"
@@ -100,8 +100,8 @@ export default function Home() {
             </div>
 
             {/* Step 3 - Payment */}
-            <div className="flex flex-col items-center text-center w-full md:w-auto md:-mr-[160px] lg:-mr-[200px]">
-              <div className="w-[480px] h-[480px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] relative">
+            <div className="flex flex-col items-center text-center w-full 2xl:w-auto 2xl:-mr-[130px] min-[2000px]:-mr-[200px]">
+              <div className="w-[480px] h-[480px] 2xl:w-[450px] 2xl:h-[450px] min-[2000px]:w-[560px] min-[2000px]:h-[560px] relative">
                 <Image
                   src="/images/emojie_33.png"
                   alt="Cash payment"
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
 
             {/* Price Box */}
-            <div className="flex flex-col bg-[#236B43] rounded-xl overflow-hidden shadow-lg w-full md:w-auto min-w-[380px] max-w-[450px] self-center md:self-center md:ml-[144px] lg:ml-[140px] md:mt-48">
+            <div className="flex flex-col bg-[#236B43] rounded-xl overflow-hidden shadow-lg w-full 2xl:w-auto min-w-[380px] max-w-[450px] self-center 2xl:self-center 2xl:ml-[100px] min-[2000px]:ml-[140px] 2xl:mt-48">
               <div className="bg-[#b59161] px-10 py-6">
                 <h4 className="text-white text-2xl font-bold text-center">
                   Актуални изкупни цени
